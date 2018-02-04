@@ -1,17 +1,19 @@
 const linebot = require('linebot');
 const express = require('express');
 
-// const bot = linebot({
-//     channelId: process.env.CHANNEL_ID,
-//     channelSecret: process.env.CHANNEL_SECRET,
-//     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
-// });
-
 const bot = linebot({
-    channelId: '1506135042',
-    channelSecret: '2a8bcdb54ffacc3e2e0738c6760945dc',
-    channelAccessToken: '7W7vOpUHcf+tu7ydA26rdw4fVYmAmPwfZPFglzg1PIBZYVAYuyXgwYAHrJkfm2tZ5Ym7OnJT92MrJttX8/zTGLFLbX4+gVbgynEb7OgPBu2Ju/JqFhEx4GPrlevCXQkULKjMx7Zg0aHWWI2pzp5WKwdB04t89/1O/w1cDnyilFU='
+    channelId: process.env.CHANNEL_ID,
+    channelSecret: process.env.CHANNEL_SECRET,
+    channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
+    verify : false
 });
+
+// const bot = linebot({
+//     channelId: '1506135042',
+//     channelSecret: '2a8bcdb54ffacc3e2e0738c6760945dc',
+//     channelAccessToken: '7W7vOpUHcf+tu7ydA26rdw4fVYmAmPwfZPFglzg1PIBZYVAYuyXgwYAHrJkfm2tZ5Ym7OnJT92MrJttX8/zTGLFLbX4+gVbgynEb7OgPBu2Ju/JqFhEx4GPrlevCXQkULKjMx7Zg0aHWWI2pzp5WKwdB04t89/1O/w1cDnyilFU=',
+//     verify : false
+// });
 
 const app = express();
 
@@ -30,6 +32,5 @@ bot.on('message', function (event) {
 });
 
 app.listen(process.env.PORT || 8080, function () {
-    console.log('LineBot is running.');
     console.log('LineBot is running.');
 });
