@@ -1,5 +1,6 @@
 const linebot = require('linebot');
 const express = require('express');
+const wordcut = require("wordcut");
 
 const bot = linebot({
     channelId: process.env.CHANNEL_ID,
@@ -12,11 +13,13 @@ const app = express();
 
 const linebotParser = bot.parser();
 
+wordcut.init();
+
 app.get('/', (req, res) => res.send('Webhook is running!'))
 app.post('/webhook', linebotParser);
 
 bot.on('message', function (event) {
-    var reply = 'You say : ' + event.message.text
+    var reply = wordcut.cut(event.message.text);
     event.reply(reply).then(function (data) {
         console.log('Success', data);
     }).catch(function (error) {
