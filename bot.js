@@ -13,7 +13,7 @@ const app = express();
 const linebotParser = bot.parser();
 
 app.get('/', (req, res) => res.send('Webhook is running!'))
-app.post('/linewebhook', linebotParser);
+app.post('/webhook', linebotParser);
 
 bot.on('message', function (event) {
     var reply = 'You say : ' + event.message.text
